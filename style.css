@@ -96,12 +96,14 @@ p {
 /* Navbar */
 
 #navbar {
+    position: fixed;
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: var(--color-pink);
     align-items: center;
     color: var(--color-white);
-    padding: 16px;
+    padding: 0px 10px;
+    transition: all var(--animation-duration) ease;
 }
 
 .navbar__logo {
@@ -118,14 +120,29 @@ p {
     margin: 0 4px;
     cursor: pointer;
     border-radius: var(--size-border-radius);
-}
-
-.navbar__menu__item.active {
-    border: 1px solid var(--color-white);
+    border: 1px solid transparent;
 }
 
 .navbar__menu__item:hover {
+    border: 1px solid var(--color-white);
     background-color: var(--color-dark-pink);
+}
+
+.navbar__toggle-btn {
+    position: absolute;
+    top: 22px;
+    right: 20px;
+    font-size: 24px;
+    color: var(--color-white);
+    /* opacity:0 으로 하면 클릭 가능 */
+    display: none;
+}
+
+.sticky {
+    top: 0px;
+    width: 100%;
+    background-color: var(--color-pink);
+    z-index: 1;
 }
 
 
@@ -133,11 +150,12 @@ p {
 
 #home {
     background: url('images/homebackground.png') center/cover no-repeat;
-    padding: 40px;
+    padding: 0px 0 40px;
     text-align: center;
 }
 
 .home__avatar {
+    margin: 120px 0 20px;
     width: 250px;
     height: 250px;
     border-radius: 50%;
@@ -169,7 +187,7 @@ p {
 }
 
 .section__container {
-    max-width: 1200px;
+    max-width: 1250px;
     margin: auto;
 }
 
@@ -299,7 +317,7 @@ p {
     padding: 8px 36px;
 }
 
-.category__btn.active,
+.category__btn.selected,
 .category__btn:hover {
     background-color: var(--color-pink);
     color: var(--color-white);
@@ -335,6 +353,14 @@ p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 60px 0;
+    opacity: 1;
+    transition: all var(--animation-duration) ease-out;
+}
+
+.work__projects.anim-out {
+    opacity: 0;
+    transform: scale(0.96) translateY(40px);
 }
 
 .project {
@@ -346,6 +372,10 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.project.invisible {
+    display: none;
 }
 
 .project__img {
@@ -375,17 +405,17 @@ p {
 }
 
 .project__description h3 {
-    color: var(--color-white);
+    color: var(--color-orange);
 }
 
 .project__description h3:after {
     content: '';
     display: block;
-    width: 25px;
+    width: 50px;
     height: 2px;
     background-color: var(--color-dark-white);
     position: relative;
-    left: 45%;
+    left: 41%;
     margin-top: 8px;
 }
 
@@ -455,4 +485,62 @@ p {
 .contact__link i:hover {
     transform: scale(1.1);
     color: var(--color-dark-pink)
+}
+
+.arrow-up {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 32px;
+    color: var(--color-white);
+    background-color: var(--color-dark-pink);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all var(--animation-duration) ease-in;
+    /* 클릭 안되게 */
+    pointer-events: none;
+}
+
+.arrow-up.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+/* For below 768px screen width */
+
+@media screen and (max-width: 768px) {
+    .navbar__toggle-btn {
+        display: block;
+    }
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 17px 0;
+        background-color: var(--color-pink);
+    }
+    .navbar__menu {
+        flex-direction: column;
+        width: 100%;
+        display: none;
+    }
+    .navbar__menu.open {
+        display: block;
+    }
+    .about__majors {
+        flex-direction: column;
+    }
+    .major {
+        margin-bottom: 50px;
+    }
+    .skillset {
+        flex-direction: column;
+    }
+    .project {
+        flex-grow: 1;
+    }
+    .testimonial__avatar {
+        width: 80px;
+        height: 80px;
+    }
 }

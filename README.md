@@ -209,6 +209,41 @@ const article = document.querySelector('#electric-cars');
 
 
 
+### JavaScript
+
+1. 스크롤 위치 따라 navbar 변경 - navbar.classList.add() 통해서
+
+   ```javascript
+   const navbar = document.querySelector("#navbar");
+   const navbarHeight = navbar.offsetTop;
+   
+   document.addEventListener('scroll', () => {
+       if (window.pageYOffset > navbarHeight) {
+           navbar.classList.add("sticky")
+       } else {
+           navbar.classList.remove("sticky");
+       }
+   })
+   ```
+
+
+
+2. 메뉴 클릭 시 해당 위치로 이동
+
+   ```javascript
+   const contactButton = document.querySelector('.home__contact');
+   contactButton.addEventListener('click', (event) => {
+       const scrollTo = document.querySelector('#contact');
+       scrollTo.scrollIntoView({ behavior: 'smooth' });
+   })
+   ```
+
+   
+
+
+
+
+
 
 
 
