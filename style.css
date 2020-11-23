@@ -123,6 +123,10 @@ p {
     border: 1px solid transparent;
 }
 
+.navbar__menu__item.active {
+    border: 1px solid var(--color-white);
+}
+
 .navbar__menu__item:hover {
     border: 1px solid var(--color-white);
     background-color: var(--color-dark-pink);
@@ -130,8 +134,8 @@ p {
 
 .navbar__toggle-btn {
     position: absolute;
-    top: 22px;
-    right: 20px;
+    top: 16px;
+    right: 10px;
     font-size: 24px;
     color: var(--color-white);
     /* opacity:0 으로 하면 클릭 가능 */
@@ -175,6 +179,11 @@ p {
     padding: 8px 12px;
     border: 2px solid var(--color-white);
     border-radius: var(--size-border-radius);
+    transition: all var(--animation-duration) ease;
+}
+
+.home__contact:hover {
+    background-color: var(--color-pink);
 }
 
 
@@ -197,7 +206,7 @@ p {
 .about__majors {
     display: flex;
     justify-content: space-between;
-    margin: 80px 0;
+    margin: 60px 0 0px;
 }
 
 .major__icon {
@@ -315,6 +324,7 @@ p {
     border-radius: var(--size-border-radius);
     font-size: var(--font-small);
     padding: 8px 36px;
+    position: relative;
 }
 
 .category__btn.selected,
@@ -333,9 +343,9 @@ p {
     line-height: 24px;
     display: inline-block;
     /* 숫자 떨어뜨리기 */
-    position: relative;
+    position: absolute;
     top: -20px;
-    left: 4px;
+    right: 4px;
     opacity: 0;
     transition: all var(--animation-duration) ease-in;
 }
@@ -433,6 +443,7 @@ p {
 .testimonial {
     display: flex;
     margin: 32px 0;
+    overflow-wrap: anywhere;
 }
 
 .testimonial:nth-child(even) {
@@ -510,6 +521,14 @@ p {
 /* For below 768px screen width */
 
 @media screen and (max-width: 768px) {
+     :root {
+        /* Font size */
+        --font-large: 30px;
+        --font-medium: 18px;
+        --font-regular: 16px;
+        --font-small: 14px;
+        --font-micro: 12px;
+    }
     .navbar__toggle-btn {
         display: block;
     }
@@ -517,6 +536,7 @@ p {
         flex-direction: column;
         align-items: flex-start;
         padding: 17px 0;
+        padding-left: 10px;
         background-color: var(--color-pink);
     }
     .navbar__menu {
@@ -527,6 +547,14 @@ p {
     .navbar__menu.open {
         display: block;
     }
+    .home__avatar {
+        width: 300px;
+        height: 300px;
+    }
+    .section {
+        padding: 16px;
+        padding-top: 40px;
+    }
     .about__majors {
         flex-direction: column;
     }
@@ -536,11 +564,28 @@ p {
     .skillset {
         flex-direction: column;
     }
+    .category__btn {
+        margin: 4px 0;
+        width: 80%;
+    }
+    .category__count {
+        right: 0px;
+    }
     .project {
         flex-grow: 1;
     }
     .testimonial__avatar {
+        position: relative;
+        top: 10px;
         width: 80px;
         height: 80px;
+    }
+    .testimonial {
+        display: block;
+        margin: 20px 0;
+        overflow-wrap: anywhere;
+    }
+    .testimonial:nth-child(even) {
+        flex-direction: row;
     }
 }

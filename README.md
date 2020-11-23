@@ -240,11 +240,43 @@ const article = document.querySelector('#electric-cars');
 
    
 
+3. 타겟 노드 설정하기
 
+   ```javascript
+   const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode
+   ```
 
+   ​	
 
+4. intersection observer API
 
+   - https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 
+     ```javascript
+     const boxes = document.querySelectorAll('.box');
+     
+     const option = {
+         root: document.querySelector('.container'), // null: viewport 기준으로 진행하겠다
+         rootMargin: '0px', // 보여지는 화면보다 마진 더 줄 수 있음
+         threshold: 0.5, // 얼만큼 보여져야 인식할지 0~1
+     }
+     const callback = (entries, observer) => {
+         entries.forEach(entry => {
+             if (entry.isIntersecting) {
+                 entry.target.classList.add('active');
+             } else {
+                 entry.target.classList.remove('active');
+             }
+         });
+     };
+     // observer 선언
+     const observer = new IntersectionObserver(callback, option);
+     
+     // observer에게 박스들 관찰할것 명령, 등록된 요소들이 화면에 들어오거나 나갈 때 callback 함수 호출
+     boxes.forEach(box => observer.observe(box));
+     ```
+
+     
 
 
 
