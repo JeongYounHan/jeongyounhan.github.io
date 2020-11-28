@@ -2,12 +2,6 @@
 
 ## 프로젝트 전반
 
-### 걸린 시간
-
-2020.11.21 ~ 
-
-
-
 ### 목적
 
 1. 포트폴리오
@@ -51,6 +45,18 @@
 
 
 
+### 보완할 점
+
+1. 브라우저 이슈
+   - css var 변수가 IE에서 적용 안됨
+
+
+
+2. JavaScript 부분 보완 필요
+   - intersection observer API 사용 다른 방법으로 대체? (부모 노드의 아이디 명으로 접근 불가능?)
+
+
+
 
 
 ## 배운 점
@@ -69,45 +75,42 @@
 
 3. data attribute
 
-   - article.dataset.columns = 5  would change that attribute to  "5"
-   
-   ```html
+
+```html
 <article
-     id="electric-cars"
-     data-columns="3"
-     data-index-number="12314"
-     data-parent="cars">
-   ...
-   </article>
-   ```
-   
+    id="electric-cars"
+    data-columns="3"
+    data-index-number="12314"
+    data-parent="cars">
+    ...
+</article>
+```
+
    ```javascript
 const article = document.querySelector('#electric-cars');
-   const article = document.querySelector('article[data-parent="cars"]');
-    
-   article.dataset.columns // "3"
-   article.dataset.indexNumber // "12314"
-   article.dataset.parent // "cars"
+const article = document.querySelector('article[data-parent="cars"]');
+
+article.dataset.columns // "3"
+article.dataset.indexNumber // "12314"
+article.dataset.parent // "cars"
    ```
-   
+
 ```css
-   article::before {
-     content: attr(data-parent);
-   }
-   article[data-columns='3'] {
-     width: 400px;
-   }
-   article[data-columns='4'] {
-     width: 600px;
-   }
-   [data-parent='cars'] {
-       
-   }
-   ```
-   
-   
+article::before {
+    content: attr(data-parent);
+}
+article[data-columns='3'] {
+    width: 400px;
+}
+article[data-columns='4'] {
+    width: 600px;
+}
+[data-parent='cars'] {
 
+}
+```
 
+   
 
 ### CSS 
 
@@ -176,7 +179,7 @@ const article = document.querySelector('#electric-cars');
 
 
 
-7. css variable
+7. css variable(IE 적용 안됨)
 
    - https://developer.mozilla.org/en-US/docs/Web/CSS/--*
 
@@ -277,6 +280,5 @@ const article = document.querySelector('#electric-cars');
      ```
 
      
-
 
 
